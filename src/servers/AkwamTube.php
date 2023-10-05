@@ -8,11 +8,11 @@ use App\Entity\Server;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class Akwam implements MovieServerInterface
+class AkwamTube implements MovieServerInterface
 {
 
     private ?int $id = null;
-    private static ?Akwam $instance = null;
+    private static ?AkwamTube $instance = null;
     private function __construct(private HttpClientInterface $httpClient, private Server $serverConfig)
     {
         $this->init();
@@ -43,9 +43,11 @@ class Akwam implements MovieServerInterface
 // Loop through each <li> element
         $videoGridElements->each(function (Crawler $videoGrid) use (&$videos) {
             // Extract data from each <li> element
-            $videoUrl = $videoGrid->filter('div.thumb a')->attr('href');
-            $title = $videoGrid->filter('h2.title a')->attr('title');
-            $cardImage = $videoGrid->filter('div.thumb a img')->attr('data-src');
+            $videoElement= $videoGrid->filter('div.thumb a');
+            $videoUrl = $videoElement->attr('href');
+            $cardImageElement = $videoGrid->filter('div.thumb a img');
+            $cardImage = $cardImageElement->attr('data-src');
+            $title = $cardImageElement->attr('alt');
 
             $movie = new Movie();
 
@@ -57,19 +59,17 @@ class Akwam implements MovieServerInterface
                     }
                 }
             }
+
             if (preg_match('~https?://([^/]+)(/.*)~', $videoUrl, $matches)) {
                 if (count($matches) > 1) {
-                    $source = new MovieSource();
-                    //todo: detect server from matches[0] and try to match it with existing server in db
-                    $source->setName($matches[1]);
-                    $source->setLink($matches[2] . '-akwam');
-                    $source->setServer($this->serverConfig);
-                    $movie->addSource($source);
+                    $videoUrl = $matches[2];
                 }
             }
             $movie->setTitle($title);
             $movie->setCardImage($cardImage);
             $movie->setVideoUrl($videoUrl);
+            $movie->setServer($this->serverConfig);
+            $movie->setMainMovie($movie);
             // Store the extracted data in an array
             $videos[] = $movie;
         });

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Server
 {
 
-    public const SERVER_AKWAM = 'Akwam';
+    public const SERVER_AKWAM = 'AkwamTube';
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

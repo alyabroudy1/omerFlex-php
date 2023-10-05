@@ -31,27 +31,36 @@ class Movie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $backgroundImage = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $rate = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $videoUrl = null;
 
     #[ORM\Column(nullable: true)]
+    private ?int $playedTime = null;
+
+    #[ORM\Column(nullable: true)]
     private ?int $totalTime = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\ManyToMany(targetEntity: MovieSource::class, inversedBy: 'movies')]
-    private Collection $sources;
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'subMovies')]
+    private ?self $mainMovie = null;
+
+    #[ORM\OneToMany(mappedBy: 'mainMovie', targetEntity: self::class)]
+    private Collection $subMovies;
+
+    #[ORM\ManyToOne]
+    private ?Server $server = null;
 
     public function __construct()
     {
-        $this->sources = new ArrayCollection();
+        $this->subMovies = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
     }
@@ -145,12 +154,24 @@ class Movie
         return $this;
     }
 
+    public function getPlayedTime(): ?int
+    {
+        return $this->playedTime;
+    }
+
+    public function setPlayedTime(?int $playedTime): static
+    {
+        $this->playedTime = $playedTime;
+
+        return $this;
+    }
+
     public function getTotalTime(): ?int
     {
         return $this->totalTime;
     }
 
-    public function setTotalTime(?int $totalTime): static
+    public function setTotalTime(int $totalTime): static
     {
         $this->totalTime = $totalTime;
 
@@ -162,7 +183,7 @@ class Movie
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 
@@ -181,26 +202,56 @@ class Movie
         return $this;
     }
 
-    /**
-     * @return Collection<int, MovieSource>
-     */
-    public function getSources(): Collection
+    public function getMainMovie(): ?self
     {
-        return $this->sources;
+        return $this->mainMovie;
     }
 
-    public function addSource(MovieSource $source): static
+    public function setMainMovie(?self $mainMovie): static
     {
-        if (!$this->sources->contains($source)) {
-            $this->sources->add($source);
+        $this->mainMovie = $mainMovie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getSubMovies(): Collection
+    {
+        return $this->subMovies;
+    }
+
+    public function addSubMovie(self $subMovie): static
+    {
+        if (!$this->subMovies->contains($subMovie)) {
+            $this->subMovies->add($subMovie);
+            $subMovie->setMainMovie($this);
         }
 
         return $this;
     }
 
-    public function removeSource(MovieSource $source): static
+    public function removeSubMovie(self $subMovie): static
     {
-        $this->sources->removeElement($source);
+        if ($this->subMovies->removeElement($subMovie)) {
+            // set the owning side to null (unless already changed)
+            if ($subMovie->getMainMovie() === $this) {
+                $subMovie->setMainMovie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getServer(): ?Server
+    {
+        return $this->server;
+    }
+
+    public function setServer(?Server $server): static
+    {
+        $this->server = $server;
 
         return $this;
     }
