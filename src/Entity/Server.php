@@ -11,6 +11,7 @@ class Server
 {
 
     public const SERVER_AKWAM = 'AkwamTube';
+    public const SERVER_MYCIMA = 'mycima';
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

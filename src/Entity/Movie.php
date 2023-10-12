@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
 {
+    public final const STATE_GROUP_OF_GROUP = 0;
+    public final const STATE_GROUP = 1;
+    public final const STATE_ITEM = 2;
+    public final const STATE_RESOLUTION = 3;
+    public final const STATE_VIDEO = 4;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -34,9 +39,6 @@ class Movie
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $rate = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $videoUrl = null;
-
     #[ORM\Column(nullable: true)]
     private ?int $playedTime = null;
 
@@ -49,20 +51,21 @@ class Movie
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'subMovies')]
+    #[ORM\OneToMany(mappedBy: 'movie', targetEntity: Source::class, cascade: ['remove', 'persist'])]
+    private Collection $sources;
+
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'mainMovie')]
     private ?self $mainMovie = null;
 
-    #[ORM\OneToMany(mappedBy: 'mainMovie', targetEntity: self::class)]
+    #[ORM\OneToMany(mappedBy: 'mainMovie', targetEntity: self::class, cascade: ['remove', 'persist'])]
     private Collection $subMovies;
-
-    #[ORM\ManyToOne]
-    private ?Server $server = null;
 
     public function __construct()
     {
-        $this->subMovies = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
+        $this->sources = new ArrayCollection();
+        $this->subMovies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,18 +145,6 @@ class Movie
         return $this;
     }
 
-    public function getVideoUrl(): ?string
-    {
-        return $this->videoUrl;
-    }
-
-    public function setVideoUrl(?string $videoUrl): static
-    {
-        $this->videoUrl = $videoUrl;
-
-        return $this;
-    }
-
     public function getPlayedTime(): ?int
     {
         return $this->playedTime;
@@ -202,6 +193,36 @@ class Movie
         return $this;
     }
 
+    /**
+     * @return Collection<int, Source>
+     */
+    public function getSources(): Collection
+    {
+        return $this->sources;
+    }
+
+    public function addSource(Source $source): static
+    {
+        if (!$this->sources->contains($source)) {
+            $this->sources->add($source);
+            $source->setMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSource(Source $source): static
+    {
+        if ($this->sources->removeElement($source)) {
+            // set the owning side to null (unless already changed)
+            if ($source->getMovie() === $this) {
+                $source->setMovie(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function getMainMovie(): ?self
     {
         return $this->mainMovie;
@@ -215,7 +236,7 @@ class Movie
     }
 
     /**
-     * @return Collection<int, self>
+     * @return Collection<int, Source>
      */
     public function getSubMovies(): Collection
     {
@@ -240,18 +261,6 @@ class Movie
                 $subMovie->setMainMovie(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getServer(): ?Server
-    {
-        return $this->server;
-    }
-
-    public function setServer(?Server $server): static
-    {
-        $this->server = $server;
 
         return $this;
     }

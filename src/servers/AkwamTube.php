@@ -5,6 +5,8 @@ namespace App\servers;
 use App\Entity\Movie;
 use App\Entity\MovieSource;
 use App\Entity\Server;
+use App\Entity\Source;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -26,54 +28,97 @@ class AkwamTube implements MovieServerInterface
        return $instance;
     }
 
+
+    public function search_test($query): array{
+
+        $movieList = [];
+
+        $mainMovie1 = new Movie();
+        $mainMovie1->setTitle("ratched-series 2");
+        $mainMovie1->setState(Movie::STATE_GROUP_OF_GROUP);
+
+        $source1 = new Source();
+        $source1->setState(Movie::STATE_GROUP_OF_GROUP);
+        $source1->setServer($this->serverConfig);
+        $source1->setVidoUrl("ratcheds series 2");
+        $mainMovie1->addSource($source1);
+
+
+
+
+//        $mainMovie1 = new Movie();
+//        $mainMovie1->setTitle("ratched sub1");
+//        $mainMovie1->setState(Movie::STATE_GROUP);
+//
+//        $source1 = new Source();
+//        $source1->setState(Movie::STATE_ITEM);
+//        $source1->setServer($this->serverConfig);
+//        $source1->setVidoUrl("ratcheds1s1");
+//        $mainMovie1->addSource($source1);
+
+//        $mainMovie2 = new Movie();
+//        $mainMovie2->setTitle("ss ratched s2");
+//
+//        $source2 = new Source();
+//        $source2->setState(Movie::STATE_ITEM);
+//        $source2->setServer($this->serverConfig);
+//        $source2->setVidoUrl("ratcheds2");
+//        $mainMovie2->addSource($source2);
+
+        $movieList[] = $mainMovie1;
+   //     $movieList[] = $mainMovie2;
+
+        return $movieList;
+    }
     public function search($query): array
     {
-        $response = $this->httpClient->request('GET', 'https://i.akwam.tube/?s=sonic');
-        $content = $response->getContent();
-
-        // Assuming $content contains your HTML response
-        $crawler = new Crawler($content);
-
-// Find all the <li> elements with the class "video-grid"
-        $videoGridElements = $crawler->filter('li.video-grid');
-
-// Initialize an array to store the extracted data
-        $videos = [];
-
-// Loop through each <li> element
-        $videoGridElements->each(function (Crawler $videoGrid) use (&$videos) {
-            // Extract data from each <li> element
-            $videoElement= $videoGrid->filter('div.thumb a');
-            $videoUrl = $videoElement->attr('href');
-            $cardImageElement = $videoGrid->filter('div.thumb a img');
-            $cardImage = $cardImageElement->attr('data-src');
-            $title = $cardImageElement->attr('alt');
-
-            $movie = new Movie();
-
-
-            if (preg_match('~https?://([^/]+)(/.*)~', $cardImage, $imageMatches)) {
-                if (count($imageMatches) > 1){
-                    if ($imageMatches[1] === $this->serverConfig->getWebAddress()){
-                        $cardImage = $imageMatches[2];
-                    }
-                }
-            }
-
-            if (preg_match('~https?://([^/]+)(/.*)~', $videoUrl, $matches)) {
-                if (count($matches) > 1) {
-                    $videoUrl = $matches[2];
-                }
-            }
-            $movie->setTitle($title);
-            $movie->setCardImage($cardImage);
-            $movie->setVideoUrl($videoUrl);
-            $movie->setServer($this->serverConfig);
-            $movie->setMainMovie($movie);
-            // Store the extracted data in an array
-            $videos[] = $movie;
-        });
-        return $videos;
+//        $response = $this->httpClient->request('GET', 'https://i.akwam.tube/?s=sonic');
+//        $content = $response->getContent();
+//
+//        // Assuming $content contains your HTML response
+//        $crawler = new Crawler($content);
+//
+//// Find all the <li> elements with the class "video-grid"
+//        $videoGridElements = $crawler->filter('li.video-grid');
+//
+//// Initialize an array to store the extracted data
+//        $videos = [];
+//
+//// Loop through each <li> element
+//        $videoGridElements->each(function (Crawler $videoGrid) use (&$videos) {
+//            // Extract data from each <li> element
+//            $videoElement= $videoGrid->filter('div.thumb a');
+//            $videoUrl = $videoElement->attr('href');
+//            $cardImageElement = $videoGrid->filter('div.thumb a img');
+//            $cardImage = $cardImageElement->attr('data-src');
+//            $title = $cardImageElement->attr('alt');
+//
+//            $movie = new Movie();
+//
+//
+//            if (preg_match('~https?://([^/]+)(/.*)~', $cardImage, $imageMatches)) {
+//                if (count($imageMatches) > 1){
+//                    if ($imageMatches[1] === $this->serverConfig->getWebAddress()){
+//                        $cardImage = $imageMatches[2];
+//                    }
+//                }
+//            }
+//
+//            if (preg_match('~https?://([^/]+)(/.*)~', $videoUrl, $matches)) {
+//                if (count($matches) > 1) {
+//                    $videoUrl = $matches[2];
+//                }
+//            }
+//            $movie->setTitle($title);
+//            $movie->setCardImage($cardImage);
+//            $movie->setVideoUrl($videoUrl);
+//            $movie->setServer($this->serverConfig);
+//           // $movie->setMainMovie($movie); the main movie shu
+//            // Store the extracted data in an array
+//            $videos[] = $movie;
+//        });
+        //return $videos;
+        return $this->search_test($query);
     }
 
     public function getId(): ?int
@@ -103,4 +148,27 @@ class AkwamTube implements MovieServerInterface
     }
 
 
+    public function fetchMovie(Movie $movie): array
+    {
+        dump('akwam fetchMovie:', $movie);
+        $mainMovie1 = new Movie();
+        $mainMovie1->setTitle("ratched sub1");
+        $mainMovie1->setState(Movie::STATE_GROUP);
+
+        $source1 = new Source();
+        $source1->setState(Movie::STATE_GROUP);
+        $source1->setServer($this->serverConfig);
+        $source1->setVidoUrl("ratcheds1s1");
+        $mainMovie1->addSource($source1);
+
+        $movie->addSubMovie($mainMovie1);
+
+        return [$mainMovie1];
+        // TODO: Implement fetchMovie() method.
+    }
+
+    public function fetchSource(Source $source): array
+    {
+        // TODO: Implement fetchSource() method.
+    }
 }

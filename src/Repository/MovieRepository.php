@@ -21,6 +21,21 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    /**
+         * @return Movie[] Returns an array of Movie objects
+         */
+    public function findMainMoviesByTitleLoose($movieTitle): array
+    {
+        $queryBuilder = $this->createQueryBuilder('m');
+        return $queryBuilder
+            ->andWhere('m.mainMovie is NULL')
+            ->andWhere($queryBuilder->expr()->like('m.title', ':title'))
+            ->setParameter('title', '%' . $movieTitle . '%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Movie[] Returns an array of Movie objects
 //     */
@@ -45,4 +60,27 @@ class MovieRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findByTitleAndState(?string $movieTitle, ?int $state)
+    {
+        $queryBuilder = $this->createQueryBuilder('m');
+        return $queryBuilder
+            ->andWhere('m.state = :state')
+            ->setParameter('state', $state)
+            ->andWhere($queryBuilder->expr()->like('m.title', ':title'))
+            ->setParameter('title', '%' . $movieTitle . '%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findSubMovies(Movie $movie)
+    {
+        $queryBuilder = $this->createQueryBuilder('m');
+        return $queryBuilder
+            ->andWhere('m.mainMovie = :mainMovie')
+            ->setParameter('mainMovie', $movie)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
