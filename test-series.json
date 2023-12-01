@@ -1,0 +1,72 @@
+{
+  "type": "series",
+  "title": "ratched 2",
+  "result": [
+    {
+      "id": 123,
+      "title": "ep 1",
+      "description": "An example movie description.",
+      "group": "Example Group",
+      "bgImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "cardImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "backgroundImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "videoUrl": "https://example.com/video.mp4",
+      "trailerUrl": "https://example.com/trailer.mp4",
+      "studio": "Example Studio",
+      "rate": "PG-13",
+      "state": 0,
+      "mainMovieTitle": "Main Movie Title",
+      "subList": [
+        {
+          "id": 456,
+          "title": "Sub Movie 1"
+        },
+        {
+          "id": 789,
+          "title": "Sub Movie 2"
+        }
+      ],
+      "isHistory": 0,
+      "playedTime": 0,
+      "mainMovie": {
+        "id": 101,
+        "title": "Main Movie"
+      },
+      "createdAt": "2023-01-01T12:00:00",
+      "updatedAt": "2023-01-02T14:30:00"
+    },
+    {
+      "id": 124,
+      "title": "ep 2",
+      "description": "An example movie description.",
+      "group": "Example Group",
+      "bgImageUrl": "https://static.wikia.nocookie.net/testingx2123/images/9/9a/Ratched_S01_Poster_01.jpg/revision/latest?cb=20201216021746",
+      "cardImageUrl": "https://static.wikia.nocookie.net/testingx2123/images/9/9a/Ratched_S01_Poster_01.jpg/revision/latest?cb=20201216021746",
+      "backgroundImageUrl": "https://static.wikia.nocookie.net/testingx2123/images/9/9a/Ratched_S01_Poster_01.jpg/revision/latest?cb=20201216021746",
+      "videoUrl": "https://example.com/video.mp4",
+      "trailerUrl": "https://example.com/trailer.mp4",
+      "studio": "Example Studio",
+      "rate": "PG-13",
+      "state": 0,
+      "mainMovieTitle": "Main Movie Title",
+      "subList": [
+        {
+          "id": 456,
+          "title": "Sub Movie 1"
+        },
+        {
+          "id": 789,
+          "title": "Sub Movie 2"
+        }
+      ],
+      "isHistory": 0,
+      "playedTime": 0,
+      "mainMovie": {
+        "id": 101,
+        "title": "Main Movie"
+      },
+      "createdAt": "2023-01-01T12:00:00",
+      "updatedAt": "2023-01-02T14:30:00"
+    }
+  ]
+}
