@@ -1,6 +1,14 @@
 {
   "servers": [
     {
+      "name": "omar",
+      "displayName": "omar",
+      "url": "https://ak.sv",
+      "webName": "https://www.akwam.cc",
+      "active": true,
+      "description": "description"
+    },
+    {
       "name": "akwam",
       "displayName": "akwam",
       "url": "https://ak.sv",
