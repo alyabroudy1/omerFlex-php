@@ -1,0 +1,36 @@
+{
+  "servers": [
+    {
+      "name": "akwam",
+      "displayName": "akwam",
+      "url": "https://ak.sv",
+      "webName": "https://www.akwam.cc",
+      "active": true,
+      "description": "description"
+    },
+    {
+      "name": "mycima",
+      "displayName": "mycima",
+      "url": "https://we1cema.shop",
+      "webName": "https://www.mycima.io",
+      "active": true,
+      "description": "description"
+    },
+    {
+      "name": "faselhd",
+      "displayName": "faselhd",
+      "url": "https://faselhd.express",
+      "webName": "https://www.faselhd.express",
+      "active": true,
+      "description": "description"
+    },
+    {
+      "name": "cimaclub",
+      "displayName": "cimaclub",
+      "url": "https://cimaclub.skin",
+      "webName": "https://cimaclub.skin",
+      "active": true,
+      "description": "description"
+    }
+  ]
+}
