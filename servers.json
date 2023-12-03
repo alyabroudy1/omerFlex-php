@@ -5,7 +5,7 @@
       "displayName": "omar",
       "url": "https://ak.sv",
       "webName": "https://www.akwam.cc",
-      "active": true,
+      "isActive": true,
       "description": "description"
     },
     {
@@ -13,7 +13,7 @@
       "displayName": "akwam",
       "url": "https://ak.sv",
       "webName": "https://www.akwam.cc",
-      "active": true,
+      "isActive": true,
       "description": "description"
     },
     {
@@ -29,7 +29,7 @@
       "displayName": "faselhd",
       "url": "https://faselhd.express",
       "webName": "https://www.faselhd.express",
-      "active": true,
+      "isActive": true,
       "description": "description"
     },
     {
@@ -37,7 +37,7 @@
       "displayName": "cimaclub",
       "url": "https://cimaclub.skin",
       "webName": "https://cimaclub.skin",
-      "active": true,
+      "isActive": true,
       "description": "description"
     },
     {
@@ -45,7 +45,7 @@
       "displayName": "watanflix",
       "url": "https://watanflix.com",
       "webName": "https://watanflix.com",
-      "active": true,
+      "isActive": true,
       "description": "description"
     }
   ]
