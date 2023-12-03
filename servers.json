@@ -39,6 +39,14 @@
       "webName": "https://cimaclub.skin",
       "active": true,
       "description": "description"
+    },
+    {
+      "name": "watanflix",
+      "displayName": "watanflix",
+      "url": "https://watanflix.com",
+      "webName": "https://watanflix.com",
+      "active": true,
+      "description": "description"
     }
   ]
 }
