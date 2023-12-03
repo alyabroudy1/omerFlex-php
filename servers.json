@@ -21,7 +21,7 @@
       "displayName": "mycima",
       "url": "https://we1cema.shop",
       "webName": "https://www.mycima.io",
-      "active": true,
+      "isActive": true,
       "description": "description"
     },
     {
