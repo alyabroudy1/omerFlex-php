@@ -5,7 +5,7 @@
       "displayName": "omar",
       "url": "https://ak.sv",
       "webName": "https://www.akwam.cc",
-      "isActive": true,
+      "isActive": false,
       "description": "description"
     },
     {
@@ -13,6 +13,14 @@
       "displayName": "akwam",
       "url": "https://ak.sv",
       "webName": "https://www.akwam.cc",
+      "isActive": true,
+      "description": "description"
+    },
+    {
+      "name": "old_Akwam",
+      "displayName": "old_Akwam",
+      "url": "https://ak.sv/old",
+      "webName": "https://www.akwam.cc/old",
       "isActive": true,
       "description": "description"
     },
