@@ -35,15 +35,15 @@
     {
       "name": "faselhd",
       "displayName": "faselhd",
-      "url": "https://faselhd.express",
-      "webName": "https://www.faselhd.link",
+      "url": "https://faselhd.link",
+      "webName": "https://www.faselhd.express",
       "isActive": true,
       "description": "description"
     },
     {
       "name": "cimaclub",
       "displayName": "cimaclub",
-      "url": "https://cimaclub.top/",
+      "url": "https://cimaclub.top",
       "webName": "https://cimaclub.skin",
       "isActive": true,
       "description": "description"
