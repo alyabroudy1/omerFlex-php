@@ -14,10 +14,43 @@
       "trailerUrl": "https://example.com/trailer.mp4",
       "studio": "Example Studio",
       "rate": "PG-13",
-      "state": 0,
+      "type": "season",
       "mainMovieTitle": "Main Movie Title",
       "isHistory": 0,
-      "playedTime": 0
+      "playedTime": 0,
+      "sublist": [
+        {
+          "title": "episode 1",
+      "description": "An example movie description.",
+      "group": "Example Group",
+      "bgImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "cardImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "backgroundImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "videoUrl": "https://example.com/video.mp4",
+          "type": "episode",
+          "sublist": [
+       {
+          "title": "420hd",
+      "description": "An example movie description.",
+      "group": "Example Group",
+      "bgImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "cardImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "backgroundImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "videoUrl": "https://example.com/video.mp4",
+          "type": "video"
+        }]
+        },
+         {
+          "title": "episode 2",
+      "description": "An example movie description.",
+      "group": "Example Group",
+      "bgImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "cardImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "backgroundImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "videoUrl": "https://example.com/video.mp4",
+          "type": "episode"
+        }
+      ]
     },
     {
       "id": 124,
@@ -34,7 +67,19 @@
       "state": 0,
       "mainMovieTitle": "Main Movie Title",
       "isHistory": 0,
-      "playedTime": 0
+      "playedTime": 0,
+      "type": "film",
+      "sublist": [
+        {
+          "title": "720hd",
+      "description": "An example movie description.",
+      "group": "Example Group",
+      "bgImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "cardImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "backgroundImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS2kGQuz5KurhOSsItFAvh68oT5GnkofgtLK0Q9YftHMdT0Zvt1B4obDrKVWVwDPaKJuU&usqp=CAU",
+      "videoUrl": "https://example.com/video.mp4",
+          "type": "video"
+        }
     }
   ]
 }
