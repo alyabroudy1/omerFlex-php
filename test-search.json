@@ -17,7 +17,7 @@
       "state": 0,
       "mainMovieTitle": "Main Movie Title",
       "isHistory": 0,
-      "playedTime": 0,
+      "playedTime": 0
     },
     {
       "id": 124,
@@ -34,7 +34,7 @@
       "state": 0,
       "mainMovieTitle": "Main Movie Title",
       "isHistory": 0,
-      "playedTime": 0,
+      "playedTime": 0
     }
   ]
 }
