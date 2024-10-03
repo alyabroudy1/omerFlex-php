@@ -1,8 +1,5 @@
 {
-  "type": "search",
-  "title": "ratched",
-  "result": [
-    {
+  {
       "id": 123,
       "title": "ratched",
       "description": "An example movie description.",
@@ -36,5 +33,5 @@
       "isHistory": 0,
       "playedTime": 0
     }
-  ]
+  
 }
