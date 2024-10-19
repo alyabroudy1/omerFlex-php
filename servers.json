@@ -71,6 +71,15 @@
       "isActive": true,
       "description": "description",
       "date": "2024-02-22T12:30:00"
+    },
+    {
+      "name": "cimaNow",
+      "displayName": "cimaNow",
+      "url": "https://cimanow.cc",
+      "webName": "https://cimanow.cc",
+      "isActive": true,
+      "description": "description",
+      "date": "2024-10-18T12:30:00"
     }
   ]
 }
