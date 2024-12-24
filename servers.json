@@ -80,6 +80,15 @@
       "isActive": true,
       "description": "description",
       "date": "2024-10-18T12:30:00"
+    },
+    {
+      "name": "koora",
+      "displayName": "koora",
+      "url": "https://kooora.live-koora.live",
+      "webName": "https://kooora.live-koora.live",
+      "isActive": true,
+      "description": "description",
+      "date": "2024-10-18T12:30:00"
     }
   ]
 }
